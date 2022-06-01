@@ -1,4 +1,3 @@
-const app = express()
 const express = require('express')
 const cookieParser = require('cookie-parser')
 const logger = require('morgan')
@@ -7,8 +6,11 @@ const session = require('express-session')
 const bcrypt = require('bcrypt')
 const checkAuth = require('./middleware/checkAuth')
 const SequelizeStore = require('connect-session-sequelize')(session.Store)
+const models = require('./models')
 const store = new SequelizeStore({ db: models.sequelize })
+const indexRouter = require('./routes/index')
 
+const app = express()
 
 app.engine('html', es6Renderer)
 app.set('views', 'templates')
@@ -34,12 +36,7 @@ app.use(
 );
 store.sync()
 
-
-
-
-
-
-
+app.use('/', indexRouter)
 
 
 module.exports = app;
