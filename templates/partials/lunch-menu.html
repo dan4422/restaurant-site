@@ -1,0 +1,11 @@
+${ results.map((result) => {
+return `
+<img src=${result.img} class="card-img-top" alt="...">
+<div class="card-body">
+    <h5 class="card-title">${result.name}</h5>
+    <p class="card-text">${result.description}</p>
+    <p>${result.calories}</p>
+    <button id=${result.id} class="add-result btn btn-primary">Add to order</button>
+</div>
+`
+})}

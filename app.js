@@ -13,6 +13,8 @@ const path = require('path')
 const app = express()
 const userLogin = require('./routes/user-login')
 const menuRouter = require('./routes/menu')
+const addProductRouter = require('./routes/add')
+const lunchMenuRouter = require('./routes/lunchMenu')
 app.engine('html', es6Renderer)
 app.set('views', 'templates')
 app.set('view engine', 'html')
@@ -41,5 +43,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter)
 app.use('/menu', menuRouter)
 app.use('/login', userLogin)
+app.use('/order', addProductRouter)
+app.use('/lunch-menu', lunchMenuRouter)
+
 
 module.exports = app;
