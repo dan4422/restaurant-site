@@ -9,9 +9,10 @@ const SequelizeStore = require('connect-session-sequelize')(session.Store)
 const models = require('./models')
 const store = new SequelizeStore({ db: models.sequelize })
 const indexRouter = require('./routes/index')
-
+const path = require('path')
 const app = express()
-
+const userLogin = require('./routes/user-login')
+const menuRouter = require('./routes/menu')
 app.engine('html', es6Renderer)
 app.set('views', 'templates')
 app.set('view engine', 'html')
@@ -35,8 +36,10 @@ app.use(
     })
 );
 store.sync()
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter)
-
+app.use('/menu', menuRouter)
+app.use('/login', userLogin)
 
 module.exports = app;
