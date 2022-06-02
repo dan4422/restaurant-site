@@ -16,15 +16,13 @@ const menuRouter = require('./routes/menu')
 const orderRouter = require('./routes/order')
 const addProductRouter = require('./routes/add')
 const lunchMenuRouter = require('./routes/lunchMenu')
+const indexRouter = require('./routes/index')
+const userRegister = require('./routes/user-register')
 
 app.engine('html', es6Renderer)
 app.set('views', 'templates')
 app.set('view engine', 'html')
 
-const indexRouter = require('./routes/index')
-const userLogin = require('./routes/user-login')
-const menuRouter = require('./routes/menu')
-const userRegister = require('./routes/user-register')
 
 app.use(logger('dev'));
 app.use(express.json());
