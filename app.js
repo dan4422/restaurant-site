@@ -8,17 +8,22 @@ const checkAuth = require('./middleware/checkAuth')
 const SequelizeStore = require('connect-session-sequelize')(session.Store)
 const models = require('./models')
 const store = new SequelizeStore({ db: models.sequelize })
-const indexRouter = require('./routes/index')
 const path = require('path')
 const app = express()
+
 const userLogin = require('./routes/user-login')
 const menuRouter = require('./routes/menu')
 const addProductRouter = require('./routes/add')
 const lunchMenuRouter = require('./routes/lunchMenu')
+
 app.engine('html', es6Renderer)
 app.set('views', 'templates')
 app.set('view engine', 'html')
 
+const indexRouter = require('./routes/index')
+const userLogin = require('./routes/user-login')
+const menuRouter = require('./routes/menu')
+const userRegister = require('./routes/user-register')
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -39,12 +44,12 @@ app.use(
 );
 store.sync()
 app.use(express.static(path.join(__dirname, 'public')));
-
 app.use('/', indexRouter)
 app.use('/menu', menuRouter)
+app.use('/user', userLogin)
+app.use('/register', userRegister)
 app.use('/login', userLogin)
 app.use('/order', addProductRouter)
 app.use('/lunch-menu', lunchMenuRouter)
 
-
-module.exports = app;
+module.exports = app; 
