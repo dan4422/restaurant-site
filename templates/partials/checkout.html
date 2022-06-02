@@ -1,0 +1,76 @@
+<!-- 
+
+Contact and Payment
+
+Name req
+
+Email req
+
+Phone Number req
+
+create account?
+password form appears if clicked, display:none/block
+
+pick up or delivery? 
+
+-->
+<p>
+    Already have an account? <a href="../login">Log in.</a>
+</p>
+<h1>
+    Contact Information
+</h1>
+<p>
+    Fields marked with an asterisk are required.
+</p>
+
+<form action="/checkout" method="post">
+    <fieldset>
+        <p>
+            <label for="name">Name *</label>
+            <input type="text" id="name" name="name" required>
+        </p>
+        <p>
+            <label for="email">Email *</label>
+            <input type="text" id="email" name="email" required>
+        </p>
+        <p>
+            <label for="phone">Phone Number *</label>
+            <input type="text" id="phone" name="phone" required>
+        </p>
+        <p>
+            <input type="checkbox" id="register" name="register" class="register" value="">
+            <label for="register">Register an account</label>
+        </p>
+        <p class="create-password" style="display: none">
+            <label for="password">Password *</label>
+            <input type="text" id="password" name="password" required>
+            
+        </p>
+    </fieldset>
+    <fieldset>
+        <h1>Pick up or Delivery?</h1>
+        <p>
+            <input class="pu" type="radio" id="pickup" name="pickupOrDelivery" value="pickup" checked>
+            <label for="pickup">Pick up</label>
+            <input class="de" type="radio" id="delivery" name="pickupOrDelivery" value="delivery">
+            <label for="delivery">Delivery</label><br>
+        </p>
+        <div class="delivery" style="display: none">
+            <p>
+                <label for="address">Street Address</label>
+                <input type="text" id="address" name="address" required>
+            </p>
+            <p>
+                <label for="city">City</label>
+                <input type="text" id="city" name="city" required>
+            </p>
+            <p>
+                <label for="state">State</label>
+                <input type="text" id="state" name="state" required>
+            </p>
+        </div>
+    </fieldset>
+    <input type="submit" id="send-order" name="send-order" value="submit">
+</form>
+

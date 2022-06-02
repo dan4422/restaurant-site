@@ -13,6 +13,7 @@ const app = express()
 
 const userLogin = require('./routes/user-login')
 const menuRouter = require('./routes/menu')
+const orderRouter = require('./routes/order')
 const addProductRouter = require('./routes/add')
 const lunchMenuRouter = require('./routes/lunchMenu')
 
@@ -49,6 +50,7 @@ app.use('/menu', menuRouter)
 app.use('/user', userLogin)
 app.use('/register', userRegister)
 app.use('/login', userLogin)
+app.use('/order', orderRouter)
 app.use('/order', addProductRouter)
 app.use('/lunch-menu', lunchMenuRouter)
 
