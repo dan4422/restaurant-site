@@ -1,0 +1,21 @@
+<table border="1">
+    <thead>
+        <tr>
+        <th>Item</th>
+        <th>Amount</th>
+        <th>Cost</th>
+        </tr>
+    </thead>
+    <tbody>
+        ${orderProducts.map(orderProduct => {
+            return `<tr>
+                <td>${orderProduct.Product.name}</td>
+                <td>${orderProduct.quantity}</td>
+                <td>$${(orderProduct.quantity * orderProduct.Product.price / 100).toFixed(2)} </td>
+            </tr>`
+        }).join('')}
+    </tbody>
+</table>
+<form action="/order/checkout" method="">
+    <input type="submit" value="Checkout" />
+</form>
