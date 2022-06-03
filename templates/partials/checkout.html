@@ -14,42 +14,43 @@ password form appears if clicked, display:none/block
 pick up or delivery? 
 
 -->
-<p>
+<p class="text-center mt-5">
     Already have an account? <a href="../login">Log in.</a>
 </p>
-<h1>
+<h1 class="text-center mt-5 mb-5 display-1">
     Contact Information
 </h1>
-<p>
+<p class="text-center mt-5">
     Fields marked with an asterisk are required.
 </p>
 
-<form action="/checkout" method="post">
+<form class="mx-auto text-center form-group w-50" action="/order/checkout" method="post">
     <fieldset>
-        <p>
-            <label for="name">Name *</label>
-            <input type="text" id="name" name="name" required>
+        <p class="form-floating">
+            <input class="form-control" type="text" id="name" name="name" placeholder="Name" required>
+            <label for="name">* Name</label>
         </p>
-        <p>
-            <label for="email">Email *</label>
-            <input type="text" id="email" name="email" required>
+        <p class="form-floating">
+            <input class="form-control" type="email" id="email" name="email" placeholder="Email" required>
+            <label for="email">* Email Address</label>
         </p>
-        <p>
-            <label for="phone">Phone Number *</label>
-            <input type="text" id="phone" name="phone" required>
+        <p class="form-floating">
+            <input class="form-control" type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="888-888-8888" required>
+            <label for="phone">* Enter your phone number (Format: 123-456-7890)</label>
         </p>
         <p>
             <input type="checkbox" id="register" name="register" class="register" value="">
             <label for="register">Register an account</label>
         </p>
-        <p class="create-password" style="display: none">
-            <label for="password">Password *</label>
-            <input type="text" id="password" name="password" required>
-            
+        <p class="create-password form-floating" style="display: none">
+            <input class="form-control" type="password" id="password" name="password" minlength="8">
+            <label for="password">* Password (8 characters minimum)</label>
         </p>
     </fieldset>
     <fieldset>
-        <h1>Pick up or Delivery?</h1>
+        <h1 class="text-center mt-5 mb-5 display-1">
+            Pick up or Delivery?
+        </h1>
         <p>
             <input class="pu" type="radio" id="pickup" name="pickupOrDelivery" value="pickup" checked>
             <label for="pickup">Pick up</label>
@@ -57,20 +58,20 @@ pick up or delivery?
             <label for="delivery">Delivery</label><br>
         </p>
         <div class="delivery" style="display: none">
-            <p>
-                <label for="address">Street Address</label>
-                <input type="text" id="address" name="address" required>
+            <p class="form-floating">
+                <input class="form-control required" type="text" id="address" name="address" placeholder="42 Wallaby Way">
+                <label for="address">Address</label>
             </p>
-            <p>
+            <p class="form-floating">
+                <input class="form-control" type="text" id="city" name="city" placeholder="Sydney">
                 <label for="city">City</label>
-                <input type="text" id="city" name="city" required>
             </p>
-            <p>
+            <p class="form-floating">
+                <input class="form-control" type="text" id="state" name="state" placeholder="GA">
                 <label for="state">State</label>
-                <input type="text" id="state" name="state" required>
             </p>
         </div>
     </fieldset>
-    <input type="submit" id="send-order" name="send-order" value="submit">
+    <input class="btn btn-primary btn-lg" type="submit">
 </form>
 

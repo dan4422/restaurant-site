@@ -42,4 +42,39 @@ router.get('/checkout', (req, res) => {
     })
 })
 
+router.post('/checkout', async (req,res) => {
+    const {name,email,password,phone,address,city,state} = req.body
+    const guest = req.session.user.name
+    console.log(guest)
+    bcrypt.hash(password,10)
+        .then(hash => {
+        models.User.create({
+            name,
+            email,
+            password: hash,
+            phone,
+            address,
+            city,
+            state
+        })
+        })
+        .then(user => {
+            res.redirect('/receipt')
+        })
+    // const user = await models.User.findOne({
+    //     where: {email: email}
+    // })
+    // if (user) {
+    //     res.render('layout', {
+    //     partials: {
+    //         body: "partials/error-existing-email"
+    //     },
+    //     locals: {
+    //         title: "Error: Email already in use"
+    //     }
+    //     })
+    //     return
+    // }
+})
+
 module.exports = router;
