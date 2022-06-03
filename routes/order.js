@@ -44,36 +44,41 @@ router.get('/checkout', (req, res) => {
 
 router.post('/checkout', async (req,res) => {
     const {name,email,password,phone,address,city,state} = req.body
-    const guest = req.session.user.name
-    bcrypt.hash(password,10)
-        .then(hash => {
-        models.User.create({
-            name,
-            email,
-            password: hash,
-            phone,
-            address,
-            city,
-            state
+    const user = await models.User.findOne({
+        where: {email: email}
+    })
+    if (user) {
+        res.render('layout', {
+        partials: {
+            body: "partials/error-existing-email"
+        },
+        locals: {
+            title: "Error: Email already in use"
+        }
         })
-        })
+        return
+    }
+    let guest = req.session.user
+    guest.name = name
+    guest.email = email
+    guest.phone = phone
+    guest.address = address
+    guest.city = city
+    guest.state = state
+
+    if (req.body.register && password) {
+        guest.password = await bcrypt.hash(password, 10)
+    }
+    models.User.update(
+        guest
+    ,
+    {
+        where: { id: guest.id },
+    })
         .then(user => {
             res.redirect('/receipt')
         })
-    // const user = await models.User.findOne({
-    //     where: {email: email}
-    // })
-    // if (user) {
-    //     res.render('layout', {
-    //     partials: {
-    //         body: "partials/error-existing-email"
-    //     },
-    //     locals: {
-    //         title: "Error: Email already in use"
-    //     }
-    //     })
-    //     return
-    // }
+
 })
 
 module.exports = router;
