@@ -6,7 +6,7 @@ const models = require('../models')
 
 
 // if user doesn't exist then set to null
-router.post('/:productId/add', async (req, res) => {
+router.post('/:productId/delete', async (req, res) => {
     // brackets around user for pulling first value out by destructuring
     // findOrCreate finds a user by id given or if not found creates a guest id
     const [user] = await models.User.findOrCreate({
@@ -34,9 +34,10 @@ router.post('/:productId/add', async (req, res) => {
             quantity: 0
         }
     })
-    orderProduct.quantity += 1
+    if (orderProduct.quantity > 0) {
+        orderProduct.quantity -= 1
+    }
     await orderProduct.save()
-    res.redirect("/menu")
 })
 
 
