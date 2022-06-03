@@ -1,0 +1,10 @@
+.home-card {
+    display: flex;
+    justify-content: flex-end;
+    border: none;
+
+}
+
+.navbar {
+    float: none
+}

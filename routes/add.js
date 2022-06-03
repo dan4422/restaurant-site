@@ -36,7 +36,6 @@ router.post('/:productId/add', async (req, res) => {
     })
     orderProduct.quantity += 1
     await orderProduct.save()
-    res.redirect("/menu")
 })
 
 
