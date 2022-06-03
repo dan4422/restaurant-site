@@ -1,11 +1,18 @@
-${ results.map((result) => {
-return `
-<img src=${result.img} class="card-img-top" alt="...">
-<div class="card-body">
-    <h5 class="card-title">${result.name}</h5>
-    <p class="card-text">${result.description}</p>
-    <p>${result.calories}</p>
-    <button id=${result.id} class="add-result btn btn-primary">Add to order</button>
+<div class="row row-cols-1 row-cols-md-3">
+    ${ results.map((result) => {
+    return `
+    <div class="col mb-4">
+        <div class="card h-100">
+            <img src=${result.img} class="card-img-top">
+            <div class="card-body">
+                <h5 class="card-title">${result.name}</h5>
+                <p class="card-text">${result.calories} calories</p>
+                <form action="/order/${result.id}/add" method="post">
+                    <button id="#add-product" class="add-product btn btn-primary">Add to order</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    `
+    }) .join(' ')}
 </div>
-`
-})}

@@ -1,4 +1,7 @@
-<table border="1">
+<h1 class="text-center mt-5 mb-5 display-1">
+    Your Order
+</h1>
+<table class="mx-auto text-center" border="1">
     <thead>
         <tr>
         <th>Item</th>
@@ -16,6 +19,6 @@
         }).join('')}
     </tbody>
 </table>
-<form action="/order/checkout" method="">
-    <input type="submit" value="Checkout" />
+<form class="text-center" action="/order/checkout" method="">
+    <button class="mt-3 btn btn-primary btn-lg" type="submit">Check out</button>
 </form>
