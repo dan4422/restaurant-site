@@ -1,3 +1,6 @@
+body {
+  color: white;
+}
 
 .heading {
   display: flex;
@@ -8,3 +11,14 @@
   min-height: 80vh;
 }
 
+.form-floating {
+  color:#6c757d
+}
+
+.card-title {
+  color:#6c757d
+}
+
+.card-text {
+  color:#6c757d
+}
