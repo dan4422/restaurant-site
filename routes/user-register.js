@@ -45,7 +45,7 @@ router.post('/', async (req,res) => {
       })
     })
       .then(user => {
-        res.redirect('/login')
+        res.redirect('/user/login')
       })
 })
 
