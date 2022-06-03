@@ -15,7 +15,9 @@ const userLogin = require('./routes/user-login')
 const menuRouter = require('./routes/menu')
 const orderRouter = require('./routes/order')
 const addProductRouter = require('./routes/add')
+const breakfastMenuRouter = require('./routes/breakfastMenu')
 const lunchMenuRouter = require('./routes/lunchMenu')
+const dinnerMenuRouter = require('./routes/dinnerMenu')
 const indexRouter = require('./routes/index')
 const userRegister = require('./routes/user-register')
 
@@ -50,6 +52,8 @@ app.use('/register', userRegister)
 app.use('/login', userLogin)
 app.use('/order', orderRouter)
 app.use('/order', addProductRouter)
+app.use('/breakfast-menu', breakfastMenuRouter)
 app.use('/lunch-menu', lunchMenuRouter)
+app.use('/dinner-menu', dinnerMenuRouter)
 
 module.exports = app; 
