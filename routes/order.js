@@ -45,7 +45,6 @@ router.get('/checkout', (req, res) => {
 router.post('/checkout', async (req,res) => {
     const {name,email,password,phone,address,city,state} = req.body
     const guest = req.session.user.name
-    console.log(guest)
     bcrypt.hash(password,10)
         .then(hash => {
         models.User.create({
