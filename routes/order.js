@@ -8,20 +8,30 @@ const router = express.Router();
 
 /* GET order page. */
 router.get('/', async (req, res) => {
-    const orderProducts = await models.OrderProduct.findAll({
-        include: models.Product
+    const order = await models.Order.findOne({
+        where: {
+            status: 'in progress',
+            UserId: req.session.user.id
+        },
+        include: {
+            model: models.OrderProduct,
+            include: models.Product
+        }
     })
-    const products = await models.Product.findByPk()
+    console.log(order)
     res.render("layout", {
         partials: {
             body: "partials/order"
         },
         locals: {
             title: "Your Order",
-            orderProducts,
-            products
+            orderProducts: order.OrderProducts
         }
     })
+})
+
+router.post('/', (req, res) => {
+    res.redirect('/order')
 })
 
 /* GET checkout page. */
