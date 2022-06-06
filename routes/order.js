@@ -146,7 +146,7 @@ router.get('/checkout/receipt', async (req, res) => {
     order.status = 'complete'
     // save then render
     order.date = new Date()
-    order.payment = "cash"
+    order.payment = "Cash"
     await order.save()
     res.render("layout", {
         partials: {
@@ -158,7 +158,6 @@ router.get('/checkout/receipt', async (req, res) => {
             order: order,
             orderProducts: order.OrderProducts,
             loggedInUser
-
         }
     })
 })
