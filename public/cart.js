@@ -5,3 +5,12 @@ for (let i = 0; i < cost.length; i++){
     sum += parseInt(cost[i].innerText.slice(1))
 }
 total.innerText = `$${sum}`
+
+const hide = document.querySelector(".hide")
+
+if (sum > 0) {
+    hide.style = 'display: block'
+}
+else {
+    hide.style = 'display: none'
+}
