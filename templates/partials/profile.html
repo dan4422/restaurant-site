@@ -1,0 +1,17 @@
+<div class="container text-center mt-5">
+  <div class="row align-items-center justify-content-center">
+    <div class="jumbotron mt-5">
+      <h1 class="mt-5">
+        Welcome, ${loggedInUser.name.split(' ').map(name => name[0].toUpperCase()
+        + name.substring(1)).join(' ')}
+      </h1>
+      <p class="lead mt-5">Hey, ${loggedInUser.name.split(' ').map(name => name[0].toUpperCase()
+        + name.substring(1)).join(' ')}! Welcome to Beefy Boi's Diner. Check out our menu and order!</p>
+      <hr class="my-4">
+      <p>Joined: ${loggedInUser.createdAt.slice(0,-14)}</p>
+    </div>
+  </div>
+</div>
+<p class="lead text-center mt-5">
+  <a class="btn btn-primary btn-lg" href="/menu" role="button">Go to Menu</a>
+</p>
