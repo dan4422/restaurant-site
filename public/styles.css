@@ -72,3 +72,13 @@ th {
 td {
   color: white;
 }
+
+.nav-container {
+  margin-left: 6em
+}
+
+@media (max-width: 553px) {
+  .nav-container {
+    margin-left: 3em
+  }
+}
