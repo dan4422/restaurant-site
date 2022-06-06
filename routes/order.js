@@ -28,7 +28,6 @@ router.get('/', async (req, res) => {
         }
     })
 })
-
 router.post('/', (req, res) => {
     res.redirect('/order')
 })
@@ -51,19 +50,19 @@ router.get('/checkout', (req, res) => {
     })
 })
 
-router.post('/checkout', async (req, res) => {
-    const { name, email, password, phone, address, city, state } = req.body
+router.post('/checkout', async (req,res) => {
+    const {name,email,password,phone,address,city,state} = req.body
     const user = await models.User.findOne({
-        where: { email: email }
+        where: {email: email}
     })
     if (user) {
         res.render('layout', {
-            partials: {
-                body: "partials/error-existing-email"
-            },
-            locals: {
-                title: "Error: Email already in use"
-            }
+        partials: {
+            body: "partials/error-existing-email"
+        },
+        locals: {
+            title: "Error: Email already in use"
+        }
         })
         return
     }
@@ -80,14 +79,36 @@ router.post('/checkout', async (req, res) => {
     }
     models.User.update(
         guest
-        ,
-        {
-            where: { id: guest.id },
-        })
+    ,
+    {
+        where: { id: guest.id },
+    })
         .then(user => {
-            res.redirect('/receipt')
+            res.redirect('/order/checkout/receipt')
         })
 
+})
+
+router.get('/checkout/receipt', async (req, res) => {
+    const order = await models.Order.findOne({
+        where: {
+            status: 'in progress',
+            UserId: req.session.user.id
+        },
+        include: {
+            model: models.OrderProduct,
+            include: models.Product
+        }
+    })
+    res.render("layout", {
+        partials: {
+            body: "partials/receipt"
+        },
+        locals: {
+            title: "Thank you!",
+            orderProducts: order.OrderProducts
+        }
+    })
 })
 
 module.exports = router;
