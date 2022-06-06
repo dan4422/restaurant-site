@@ -14,8 +14,7 @@ password form appears if clicked, display:none/block
 pick up or delivery? 
 
 -->
-
-<p class="text-center mt-5">
+${(!loggedInUser || loggedInUser?.name == 'guest') ? `<p class="text-center mt-5">
     Already have an account? <a href="/user/login">Log in.</a>
 
 </p>
@@ -45,7 +44,8 @@ pick up or delivery?
             <input class="form-control required-password" type="password" id="password" name="password" minlength="8">
             <label for="password" class="text-secondary">Password (8 characters minimum)</label>
         </p>
-    </fieldset>
+    </fieldset>` : `<form class="mx-auto text-center form-group w-50" action="/order/checkout" method="post">` }
+
     <fieldset>
         <h1 class="text-center mt-5 mb-5 display-1">
             Pick up or Delivery?

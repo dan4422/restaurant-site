@@ -74,7 +74,11 @@ router.get('/checkout', (req, res) => {
 })
 
 router.post('/checkout', async (req,res) => {
-    const {name,email,password,phone,address,city,state} = req.body
+    const {name,email,password,phone,address,city,state,pickupOrDelivery} = req.body
+    if (req.session.user.email) {
+        res.redirect(`/order/checkout/receipt?method=${pickupOrDelivery}`)
+        return
+    }
     const user = await models.User.findOne({
         where: {email: email}
     })
@@ -107,7 +111,7 @@ router.post('/checkout', async (req,res) => {
         where: { id: guest.id },
     })
         .then(user => {
-            res.redirect('/order/checkout/receipt')
+            res.redirect(`/order/checkout/receipt?method=${pickupOrDelivery}`)
         })
 
 })
