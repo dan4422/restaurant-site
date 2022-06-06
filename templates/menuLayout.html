@@ -13,8 +13,13 @@
         integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="/styles.css" type="text/css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" defer
+        crossorigin="anonymous"></script>
+    <script src="/checkout-script.js" defer></script>
     <title>${title}</title>
 </head>
+
 
 <body class="bg-dark  text-light">
     <div class="d-flex align-items-center justify-content-evenly mt-2">
@@ -28,39 +33,56 @@
                 </button>
                 <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                            <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" href="/menu"
-                                    id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Menu </a>
-                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li><a class="dropdown-item" href="/breakfast-menu">Breakfast Menu</a></li>
-                                    <li><a class="dropdown-item" href="/lunch-menu">Lunch Menu</a></li>
-                                    <li><a class="dropdown-item" href="/dinner-menu">Dinner Menu</a></li>
-                                </ul>
-                            </li>
-                        </div>
                         <li class="nav-item">
-                            ${(loggedInUser) ? `<a class="nav-link" href="/user/${loggedInUser.id}">Profile</a>` : `<a class="nav-link" href="/register">Register</a>` }
+                            <a class="nav-link active" aria-current="page" href="/menu">Menu</a>
+                        </li>
+                        <li class="nav-item">
+                            ${(loggedInUser) ? `<a class="nav-link" href="/user/${loggedInUser.id}">Profile</a>` : `<a
+                                class="nav-link" href="/register">Register</a>` }
+
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/order">Cart</a>
                         </li>
                         <li class="nav-item">
-                            ${(loggedInUser) ? `<a class="nav-link" href="/user/logout">Logout</a>` : `<a
+                            <a class="nav-link" href="/search">Search</a>
+                        </li>
+
+                        <li>${(loggedInUser) ? `<a class="nav-link" href="/user/logout">Logout</a>` : `<a
                                 class="nav-link" href="/user/login">Login</a>` }
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
-        ${(loggedInUser) ? `<div><a style="text-decoration: none; color: salmon"href="/user/${loggedInUser.id}"><i class="fa-solid fa-user"></i> Welcome, ${loggedInUser.name.split(' ').map(name => name[0].toUpperCase() + name.substring(1)).join(' ')}</a></div>` : `` }
+        ${(loggedInUser) ? `<div><a style="text-decoration: none; color: salmon" href="/user/${loggedInUser.id}"><i
+                    class="fa-solid fa-user"></i> Welcome, ${loggedInUser.name.split(' ').map(name =>
+                name[0].toUpperCase() + name.substring(1)).join(' ')}</a></div>` : `` }
     </div>
     <div class="body-container">
         ${body}
+
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
-        crossorigin="anonymous"></script>
+    <div class="d-flex justify-content-evenly mt-2">
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <div class="container">
+                <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/breakfast-menu">Breakfast Menu</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/lunch-menu">Lunch Menu</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/dinner-menu">Dinner Menu</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+    ${body}
 </body>
 
 </html>

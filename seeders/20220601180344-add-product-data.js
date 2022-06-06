@@ -18,7 +18,7 @@ module.exports = {
         description: 'double burger with cheese,lettuce,tomato,onions and special sauce!',
         category: 'Dinner',
         calories: 100,
-        img: "https://diethood.com/wp-content/uploads/2021/02/ribeye-steak-5.jpg",
+        img: "https://sandiegoburgercompany.com/wp-content/uploads/2020/07/mobile-header-bg.jpg",
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -28,7 +28,7 @@ module.exports = {
         description: 'Alfredo chicken pasta',
         category: 'Dinner',
         calories: 100,
-        img: "https://diethood.com/wp-content/uploads/2021/02/ribeye-steak-5.jpg",
+        img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRe5NTFd1xJfJb6xzcmOb1LzYzNg6YpD95qzQ&usqp=CAU",
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -48,7 +48,7 @@ module.exports = {
         description: '10 oz rib-eye steak with sides',
         category: 'Dinner',
         calories: 100,
-        img: "https://diethood.com/wp-content/uploads/2021/02/ribeye-steak-5.jpg",
+        img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSav7PRqeiCJEaYjmZntskkFki4uP5lRWlU2A&usqp=CAU",
         createdAt: new Date(),
         updatedAt: new Date()
       },

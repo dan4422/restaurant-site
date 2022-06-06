@@ -2,17 +2,41 @@ const express = require('express');
 const router = express.Router();
 const { route } = require('.');
 const models = require('../models')
+const bodyParser = require("body-parser")
+const urlencodedParser = bodyParser.urlencoded({ extended: false })
+const { Op } = require("sequelize")
+router.get('/', async (req, res) => {
+    const products = await models.Product.findAll()
+    res.render("layout", {
+        partials: {
+            body: "partials/search"
+        },
+        locals: {
+            title: "Welcome to Beefy Boi's Diner",
+            products,
+        }
+    })
+})
 
-
-router.get('/search', (req, res) => {
-    let { term } = req.query;
-
-    // Make lowercase
-    term = term.toLowerCase();
-
-    models.findAll({ where: { products: { [Op.like]: '%' + term + '%' } } })
-        .then(gigs => res.render('gigs', { gigs }))
-        .catch(err => res.render('error', { error: err }));
-});
+router.post('/', async (req, res) => {
+    const { name } = req.body
+    console.log(name)
+    const product = await models.Product.findAll({
+        where: {
+            name: {
+                [Op.iLike]: "%" + name + "%"
+            }
+        }
+    })
+    res.render("layout", {
+        partials: {
+            body: "partials/search-results"
+        },
+        locals: {
+            title: "Welcome to Beefy Boi's Diner",
+            product,
+        }
+    })
+})
 
 module.exports = router;

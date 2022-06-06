@@ -38,11 +38,13 @@ router.post('/:productId/delete', async (req, res) => {
         orderProduct.quantity -= 1
         await orderProduct.save()
     }
+
     else if (orderProduct.quantity = 1) {
         await orderProduct.destroy()
     }
 
     res.redirect('back')
+
 })
 
 

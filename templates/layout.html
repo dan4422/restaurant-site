@@ -6,44 +6,61 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous" defer>
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" defer
+        crossorigin="anonymous">
     <link rel="stylesheet" href="/styles.css" type="text/css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" defer crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" defer
+        crossorigin="anonymous"></script>
     <script src="/checkout-script.js" defer></script>
     <title>${title}</title>
 </head>
 
+
 <body class="bg-dark text-light">
     <div class="d-flex align-items-center justify-content-evenly mt-2">
-    <a class="navbar-brand" href="/">Beefy Boi's Diner</a>
-    <nav class="navbar navbar-expand-lg navbar-dark">
-        <div class="container">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/menu">Menu</a>
-                    </li>
-                    <li class="nav-item">
-                        ${(loggedInUser) ? `<a class="nav-link" href="/user/${loggedInUser.id}">Profile</a>` : `<a class="nav-link" href="/register">Register</a>` }
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/order">Cart</a>
-                    </li>
-                    <li class="nav-item">
-                        ${(loggedInUser) ? `<a class="nav-link" href="/user/logout">Logout</a>` : `<a class="nav-link" href="/user/login">Login</a>` }
-                    </li>
-                </ul>
+        <a class="navbar-brand" href="/">Beefy Boi's Diner</a>
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <div class="container">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="/menu">Menu</a>
+                        </li>
+                        <li class="nav-item">
+                            ${(loggedInUser) ? `<a class="nav-link" href="/user/${loggedInUser.id}">Profile</a>` : `<a
+                                class="nav-link" href="/register">Register</a>` }
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/order">Cart</a>
+                        </li>
+                        <li class="nav-item">
+                            ${(loggedInUser) ? `<a class="nav-link" href="/user/logout">Logout</a>` : `<a
+                                class="nav-link" href="/user/login">Login</a>` }
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/search">Search</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/reservation">Dine-in</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-        </div>
-    </nav>
-    ${(loggedInUser) ? `<div><a style="text-decoration: none; color: salmon"href="/user/${loggedInUser.id}"><i class="fa-solid fa-user"></i> Welcome, ${loggedInUser.name.split(' ').map(name => name[0].toUpperCase() + name.substring(1)).join(' ')}</a></div>` : `` }
-</div>
+        </nav>
+        ${(loggedInUser) ? `<div><a style="text-decoration: none; color: salmon" href="/user/${loggedInUser.id}"><i
+                    class="fa-solid fa-user"></i> Welcome, ${loggedInUser.name.split(' ').map(name =>
+                name[0].toUpperCase() + name.substring(1)).join(' ')}</a></div>` : `` }
+    </div>
     ${body}
 </body>
+
 </html>

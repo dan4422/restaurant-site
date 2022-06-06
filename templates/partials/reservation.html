@@ -1,0 +1,15 @@
+<h1 class="text-center mt-3 mb-5 display-1">Make a reservation</h1>
+<form class="mx-auto text-center form-group w-50" action="/reservation" type="submit" method="post">
+    <p class="form-floating">
+        <input class="form-control" type="text" id="name" name="name" placeholder="Name" required>
+        <label for="name">Name</label>
+    </p>
+    <p class="form-floating">
+        <input class="form-control" type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+            placeholder="888-888-8888" required>
+        <label for="phone">Enter your phone number (Format: 123-456-7890)</label>
+    </p>
+    <label min="2022-06-05T00:00" max="2060-12-31T00:00" for="date">Pick a reservation date and time:</label>
+    <input type="datetime-local" id="date" name="date">
+    <button class="btn btn-primary btn-lg" type="submit">Reserve!</button>
+</form>
