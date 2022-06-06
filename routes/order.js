@@ -11,6 +11,7 @@ router.get('/', async (req, res) => {
     const orderProducts = await models.OrderProduct.findAll({
         include: models.Product
     })
+    console.log(orderProducts)
     const products = await models.Product.findByPk()
     res.render("layout", {
         partials: {
@@ -42,19 +43,19 @@ router.get('/checkout', (req, res) => {
     })
 })
 
-router.post('/checkout', async (req,res) => {
-    const {name,email,password,phone,address,city,state} = req.body
+router.post('/checkout', async (req, res) => {
+    const { name, email, password, phone, address, city, state } = req.body
     const user = await models.User.findOne({
-        where: {email: email}
+        where: { email: email }
     })
     if (user) {
         res.render('layout', {
-        partials: {
-            body: "partials/error-existing-email"
-        },
-        locals: {
-            title: "Error: Email already in use"
-        }
+            partials: {
+                body: "partials/error-existing-email"
+            },
+            locals: {
+                title: "Error: Email already in use"
+            }
         })
         return
     }
@@ -71,10 +72,10 @@ router.post('/checkout', async (req,res) => {
     }
     models.User.update(
         guest
-    ,
-    {
-        where: { id: guest.id },
-    })
+        ,
+        {
+            where: { id: guest.id },
+        })
         .then(user => {
             res.redirect('/receipt')
         })

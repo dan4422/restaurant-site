@@ -1,0 +1,24 @@
+<form id="search-form" method="POST" action="/search">
+    <label for="name">What name do you wanna look up?</label>
+    <input type="text" name="name">
+    <input type="submit" name="submit" id="submit">
+</form>
+
+<div class="row row-cols-1 row-cols-md-3">
+    ${ product.map((p) => {
+    return `
+    <div class="col mb-4">
+        <div class="card h-100" style="width: 18rem">
+            <img src=${p.img} class="card-img-top">
+            <div class="card-body">
+                <h5 class="card-title">${p.name}</h5>
+                <p class="card-text">${p.calories} calories</p>
+                <form action="/order/${p.id}/add" method="post">
+                    <button id="#add-product" class="add-product btn btn-primary">Add to order</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    `
+    }) .join(' ')}
+</div>

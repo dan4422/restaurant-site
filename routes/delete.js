@@ -37,7 +37,8 @@ router.post('/:productId/delete', async (req, res) => {
     if (orderProduct.quantity > 0) {
         orderProduct.quantity -= 1
     }
-    await orderProduct.save()
+    else if (orderProduct)
+        await orderProduct.save()
 })
 
 
