@@ -26,7 +26,6 @@ router.get('/', async (req, res) => {
             include: models.Product
         }
     })
-    console.log(order.OrderProducts)
     if (!order.OrderProducts) {
         res.render("layout", {
             partials: {
@@ -49,8 +48,8 @@ router.get('/', async (req, res) => {
         }
     })
     }
-
 })
+
 router.post('/', (req, res) => {
     res.redirect('/order')
 })
@@ -118,7 +117,15 @@ router.post('/checkout', async (req,res) => {
 })
 
 router.get('/checkout/receipt', async (req, res) => {
-    const order = await models.Order.findOne({
+    const [user] = await models.User.findOrCreate({
+        where: { id: req.session.user?.id || null },
+        defaults: {
+            name: "guest"
+        }
+    })
+    req.session.user = user
+    loggedInUser = req.session.user
+    const [order] = await models.Order.findOrCreate({
         where: {
             status: 'in progress',
             UserId: req.session.user.id
@@ -128,16 +135,16 @@ router.get('/checkout/receipt', async (req, res) => {
             include: models.Product
         }
     })
-    res.render("layout", {
+        res.render("layout", {
         partials: {
             body: "partials/receipt"
         },
         locals: {
-            title: "Thank you!",
+            title: "Order Confirmation",
+            user: user,
+            order: order,
             orderProducts: order.OrderProducts,
-            user: order.Users,
             loggedInUser
-
         }
     })
 })

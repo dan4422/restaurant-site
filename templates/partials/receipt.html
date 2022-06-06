@@ -1,1 +1,47 @@
-<h1>Thank you for your order!</h1>
+<h1 class="mx-auto text-center">
+    Thank you for your order!
+</h1>
+<p class="mx-auto text-center">
+    Your order has been received and is now being processed.
+</p>
+<br>
+<h2>Order Number - ${order.id}</h2>
+<table class="table mx-auto text-center" border="1">
+    <thead>
+        <tr>
+            
+            <th>Amount</th>
+            <th>Cost</th>
+            <th>Remove</th>
+        </tr>
+    </thead>
+    <tbody>
+        ${orderProducts.map(orderProduct => {
+        return `<tr>
+            <td>${orderProduct.Product.name}</td>
+            <td>${orderProduct.quantity}</td>
+            <td class="cost">$${(orderProduct.quantity * orderProduct.Product.price / 100).toFixed(2)}</td>
+        </tr>`
+        }).join('')}
+        <tr>
+            <td>Total</td>
+            <td></td>
+            <td class="total">$1</td>
+        </tr>
+    </tbody>
+</table>
+<h2>
+    Customer details
+</h2>
+<br>
+<p>
+    Name: ${user.name}
+</p>
+<p>
+    Email: ${user.email}
+</p>
+<p>
+    Phone number: ${user.phone}
+</p>
+
+<script src="/cart.js"></script>
