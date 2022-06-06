@@ -15,6 +15,7 @@ router.get('/', async (req, res) => {
         }
     })
     req.session.user = user
+    loggedInUser = req.session.user
     const [order] = await models.Order.findOrCreate({
         where: {
             status: 'in progress',
@@ -43,7 +44,8 @@ router.get('/', async (req, res) => {
         },
         locals: {
             title: "Your Order",
-            orderProducts: order.OrderProducts
+            orderProducts: order.OrderProducts,
+            loggedInUser
         }
     })
     }
@@ -66,7 +68,8 @@ router.get('/checkout', (req, res) => {
         locals: {
             title: "Checkout",
             orderProducts,
-            products
+            products,
+            loggedInUser
         }
     })
 })
@@ -128,7 +131,9 @@ router.get('/checkout/receipt', async (req, res) => {
         locals: {
             title: "Thank you!",
             orderProducts: order.OrderProducts,
-            user: order.Users
+            user: order.Users,
+            loggedInUser
+
         }
     })
 })

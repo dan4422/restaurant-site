@@ -7,6 +7,7 @@ const urlencodedParser = bodyParser.urlencoded({ extended: false })
 const { Op } = require("sequelize")
 router.get('/', async (req, res) => {
     const products = await models.Product.findAll()
+    loggedInUser = req.session.user
     res.render("layout", {
         partials: {
             body: "partials/search"
@@ -14,6 +15,7 @@ router.get('/', async (req, res) => {
         locals: {
             title: "Welcome to Beefy Boi's Diner",
             products,
+            loggedInUser
         }
     })
 })

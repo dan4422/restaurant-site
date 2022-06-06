@@ -9,6 +9,7 @@ router.get('/', async (req, res) => {
     const products = await models.Product.findAll()
     // const product = products.map((product => product.category))
     const results = products.filter(p => p.category == 'Dinner')
+    loggedInUser = req.session.user
     res.render("menuLayout", {
         partials: {
             body: "partials/dinner-menu"
@@ -17,6 +18,7 @@ router.get('/', async (req, res) => {
             title: "Welcome to not chick-fil-a dinner menu!",
             products,
             results,
+            loggedInUser
         }
     })
 })
