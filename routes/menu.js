@@ -7,13 +7,15 @@ const models = require('../models')
 
 router.get('/', async (req, res) => {
     const products = await models.Product.findAll()
+    loggedInUser = req.session.user
     res.render("menuLayout", {
         partials: {
             body: "partials/menu"
         },
         locals: {
             title: "Welcome to not chick-fil-a menu!",
-            products
+            products,
+            loggedInUser
         }
     })
 })

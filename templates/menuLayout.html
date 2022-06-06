@@ -58,15 +58,11 @@
                     class="fa-solid fa-user"></i> Welcome, ${loggedInUser.name.split(' ').map(name =>
                 name[0].toUpperCase() + name.substring(1)).join(' ')}</a></div>` : `` }
     </div>
-    <div class="body-container">
-        ${body}
-
-    </div>
     <div class="d-flex justify-content-evenly mt-2">
         <nav class="navbar navbar-expand-lg navbar-dark">
             <div class="container">
                 <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-">
                         <li class="nav-item">
                             <a class="nav-link" href="/breakfast-menu">Breakfast Menu</a>
                         </li>
