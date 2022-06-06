@@ -8,8 +8,15 @@ const router = express.Router();
 
 /* GET order page. */
 router.get('/', async (req, res) => {
+    const [user] = await models.User.findOrCreate({
+        where: { id: req.session.user?.id || null },
+        defaults: {
+            name: "guest"
+        }
+    })
+    req.session.user = user
     loggedInUser = req.session.user
-    const order = await models.Order.findOne({
+    const [order] = await models.Order.findOrCreate({
         where: {
             status: 'in progress',
             UserId: req.session.user.id
@@ -19,7 +26,19 @@ router.get('/', async (req, res) => {
             include: models.Product
         }
     })
-    res.render("layout", {
+    console.log(order.OrderProducts)
+    if (!order.OrderProducts) {
+        res.render("layout", {
+            partials: {
+                body: "partials/no-cart"
+            },
+            locals: {
+                title: "Your Cart is Empty"
+            }
+        })
+    }
+    else {
+        res.render("layout", {
         partials: {
             body: "partials/order"
         },
@@ -29,6 +48,8 @@ router.get('/', async (req, res) => {
             loggedInUser
         }
     })
+    }
+
 })
 router.post('/', (req, res) => {
     res.redirect('/order')
@@ -110,7 +131,9 @@ router.get('/checkout/receipt', async (req, res) => {
         locals: {
             title: "Thank you!",
             orderProducts: order.OrderProducts,
+            user: order.Users,
             loggedInUser
+
         }
     })
 })
