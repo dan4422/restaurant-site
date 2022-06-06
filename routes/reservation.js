@@ -5,12 +5,14 @@ const models = require('../models')
 
 
 router.get('/', async (req, res) => {
+    loggedInUser = req.session.user
     res.render("layout", {
         partials: {
             body: "partials/reservation"
         },
         locals: {
             title: "Make a reservation!",
+            loggedInUser
         }
     })
 })

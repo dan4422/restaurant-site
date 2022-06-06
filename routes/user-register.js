@@ -6,12 +6,14 @@ const app = require('../app');
 
 /* GET users listing. */
 router.get('/', function (req, res, next) {
+  loggedInUser = req.session.user
   res.render("layout", {
     partials: {
         body: "partials/user-register"
     },
     locals: {
-        title: "Registration"
+        title: "Registration",
+        loggedInUser
     }
   })
 });

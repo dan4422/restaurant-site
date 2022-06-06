@@ -11,7 +11,7 @@ router.get('/login', function (req, res, next) {
       body: 'partials/user-login'
     },
     locals: {
-      title: 'Login'
+      title: 'Login',
     }
   });
 });
