@@ -38,15 +38,15 @@ router.get('/', async (req, res) => {
     }
     else {
         res.render("layout", {
-        partials: {
-            body: "partials/order"
-        },
-        locals: {
-            title: "Your Order",
-            orderProducts: order.OrderProducts,
-            loggedInUser
-        }
-    })
+            partials: {
+                body: "partials/order"
+            },
+            locals: {
+                title: "Your Order",
+                orderProducts: order.OrderProducts,
+                loggedInUser
+            }
+        })
     }
 })
 
@@ -73,23 +73,24 @@ router.get('/checkout', (req, res) => {
     })
 })
 
-router.post('/checkout', async (req,res) => {
-    const {name,email,password,phone,address,city,state,pickupOrDelivery} = req.body
+router.post('/checkout', async (req, res) => {
+    const { name, email, password, phone, address, city, state, pickupOrDelivery } = req.body
     if (req.session.user.email) {
         res.redirect(`/order/checkout/receipt?method=${pickupOrDelivery}`)
         return
     }
     const user = await models.User.findOne({
-        where: {email: email}
+        where: { email: email }
     })
+
     if (user) {
         res.render('layout', {
-        partials: {
-            body: "partials/error-existing-email"
-        },
-        locals: {
-            title: "Error: Email already in use"
-        }
+            partials: {
+                body: "partials/error-existing-email"
+            },
+            locals: {
+                title: "Error: Email already in use"
+            }
         })
         return
     }
@@ -106,10 +107,10 @@ router.post('/checkout', async (req,res) => {
     }
     models.User.update(
         guest
-    ,
-    {
-        where: { id: guest.id },
-    })
+        ,
+        {
+            where: { id: guest.id },
+        })
         .then(user => {
             res.redirect(`/order/checkout/receipt?method=${pickupOrDelivery}`)
         })
@@ -125,7 +126,7 @@ router.get('/checkout/receipt', async (req, res) => {
     })
     req.session.user = user
     loggedInUser = req.session.user
-    const [order] = await models.Order.findOrCreate({
+    const order = await models.Order.findOne({
         where: {
             status: 'in progress',
             UserId: req.session.user.id
@@ -135,7 +136,19 @@ router.get('/checkout/receipt', async (req, res) => {
             include: models.Product
         }
     })
-        res.render("layout", {
+    // add in total price
+    let total = 0
+    for (let op of order.OrderProducts) {
+        total += op.Product.price * op.quantity
+    }
+    order.total = total
+    // change status to complete
+    order.status = 'complete'
+    // save then render
+    order.date = new Date()
+    order.payment = "cash"
+    await order.save()
+    res.render("layout", {
         partials: {
             body: "partials/receipt"
         },
@@ -145,8 +158,13 @@ router.get('/checkout/receipt', async (req, res) => {
             order: order,
             orderProducts: order.OrderProducts,
             loggedInUser
+
         }
     })
+})
+
+router.post('/checkout/receipt', async (req, res) => {
+    res.redirect('/menu')
 })
 
 module.exports = router;

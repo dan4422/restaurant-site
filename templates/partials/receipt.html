@@ -9,7 +9,7 @@
 <table class="table mx-auto text-center" border="1">
     <thead>
         <tr>
-            
+
             <th>Amount</th>
             <th>Cost</th>
             <th>Remove</th>
@@ -43,5 +43,8 @@
 <p>
     Phone number: ${user.phone}
 </p>
+<form action="/order/checkout/receipt" method="post">
+    <button>Create New Order</button>
+</form>
 
 <script src="/cart.js"></script>
