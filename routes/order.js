@@ -56,6 +56,7 @@ router.post('/', (req, res) => {
 
 /* GET checkout page. */
 router.get('/checkout', (req, res) => {
+    loggedInUser = req.session.user
     const orderProducts = models.OrderProduct.findAll({
         include: models.Product
     })
@@ -113,7 +114,6 @@ router.post('/checkout', async (req,res) => {
         .then(user => {
             res.redirect(`/order/checkout/receipt?method=${pickupOrDelivery}`)
         })
-
 })
 
 router.get('/checkout/receipt', async (req, res) => {
