@@ -1,3 +1,6 @@
+body {
+  color: white;
+}
 
 .heading {
   display: flex;
@@ -12,3 +15,14 @@ label {
   color: rgb(102, 99, 98);
 }
 
+.form-floating {
+  color:#6c757d
+}
+
+.card-title {
+  color:#6c757d
+}
+
+.card-text {
+  color:#6c757d
+}
