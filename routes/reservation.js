@@ -20,6 +20,7 @@ router.post('/', async (req, res) => {
     const user = await models.User.findOne({
         where: { phone: phone }
     })
+    console.log(user)
     if (user) {
         const reservationTaken = await models.Reservations.findOne({
             where: {
@@ -28,7 +29,7 @@ router.post('/', async (req, res) => {
         })
         if (!reservationTaken) {
             await models.Reservations.create({
-                userId: user.id,
+                UserId: user.id,
                 date: date
             })
                 .then(user => {
@@ -39,9 +40,7 @@ router.post('/', async (req, res) => {
             res.redirect('/wait-list')
         }
     }
-    console.log(date)
     if (!user) {
-        console.log(date)
         await models.User.create({
             name,
             phone,
@@ -49,7 +48,6 @@ router.post('/', async (req, res) => {
         const user = await models.User.findOne({
             where: { phone: phone }
         })
-        console.log(date)
         const reservations = await models.Reservations.findOne({
             where: { date: date }
 
