@@ -34,11 +34,17 @@ router.post('/:productId/delete', async (req, res) => {
             quantity: 0
         }
     })
-    if (orderProduct.quantity > 0) {
+    if (orderProduct.quantity > 1) {
         orderProduct.quantity -= 1
-    }
-    else if (orderProduct)
         await orderProduct.save()
+    }
+
+    else if (orderProduct.quantity = 1) {
+        await orderProduct.destroy()
+    }
+
+    res.redirect('back')
+
 })
 
 

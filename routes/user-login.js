@@ -52,8 +52,28 @@ router.get('/logout', (req,res) => {
   // remove customer details from session
   req.session.user = null
   // redirect back to login
-  res.redirect('/users/login')
+  res.redirect('/')
 })
+
+router.get('/:id', async (req,res) => {
+  const id = req.params.id
+  const user = await models.User.findOne({
+    where: {id: id},
+  })
+  loggedInUser = req.session.user
+  const upperName = user.name.split(' ').map(name => name[0].toUpperCase() + name.substring(1)).join(' ')
+  res.render('layout', {
+    partials: {
+      body: 'partials/profile'
+    },
+    locals: {
+      title: `${upperName}'s Profile`,
+      user,
+      loggedInUser,
+    }
+  })
+})
+
 
 
 module.exports = router;

@@ -11,7 +11,6 @@ router.get('/', async (req, res) => {
             userId: req.session.user
         },
     })
-    console.log(user)
     res.render("layout", {
         partials: {
             body: "partials/receipt"
