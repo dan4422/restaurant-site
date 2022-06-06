@@ -11,6 +11,10 @@ body {
   min-height: 80vh;
 }
 
+label {
+  color: rgb(102, 99, 98);
+}
+
 .form-floating {
   color:#6c757d
 }

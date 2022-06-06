@@ -9,48 +9,52 @@
         integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="/styles.css" type="text/css">
     <title>${title}</title>
 </head>
 
-<body class="bg-dark">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="/">Beefy Boi's Diner</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="/menu" id="navbarDropdown" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                Menu
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="/breakfast-menu">Breakfast Menu</a></li>
-                                <li><a class="dropdown-item" href="/lunch-menu">Lunch Menu</a></li>
-                                <li><a class="dropdown-item" href="/dinner-menu">Dinner Menu</a></li>
-                            </ul>
+<body class="bg-dark  text-light">
+    <div class="d-flex align-items-center justify-content-evenly mt-2">
+        <a class="navbar-brand" href="/">Beefy Boi's Diner</a>
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <div class="container">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" href="/menu"
+                                    id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Menu </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li><a class="dropdown-item" href="/breakfast-menu">Breakfast Menu</a></li>
+                                    <li><a class="dropdown-item" href="/lunch-menu">Lunch Menu</a></li>
+                                    <li><a class="dropdown-item" href="/dinner-menu">Dinner Menu</a></li>
+                                </ul>
+                            </li>
+                        </div>
+                        <li class="nav-item">
+                            ${(loggedInUser) ? `<a class="nav-link" href="/user/${loggedInUser.id}">Profile</a>` : `<a class="nav-link" href="/register">Register</a>` }
                         </li>
-                    </div>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/user/login">Login</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/register">Register</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/order">Cart</a>
-                    </li>
-                </ul>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/order">Cart</a>
+                        </li>
+                        <li class="nav-item">
+                            ${(loggedInUser) ? `<a class="nav-link" href="/user/logout">Logout</a>` : `<a
+                                class="nav-link" href="/user/login">Login</a>` }
+                        </li>
+                    </ul>
+                </div>
             </div>
-        </div>
-    </nav>
-    <h1 class="title">${title}</h1>
+        </nav>
+        ${(loggedInUser) ? `<div><a style="text-decoration: none; color: salmon"href="/user/${loggedInUser.id}"><i class="fa-solid fa-user"></i> Welcome, ${loggedInUser.name.split(' ').map(name => name[0].toUpperCase() + name.substring(1)).join(' ')}</a></div>` : `` }
+    </div>
     <div class="body-container">
         ${body}
     </div>
