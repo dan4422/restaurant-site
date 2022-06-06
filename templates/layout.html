@@ -35,8 +35,8 @@
                             <a class="nav-link active" aria-current="page" href="/menu">Menu</a>
                         </li>
                         <li class="nav-item">
-                            ${(loggedInUser) ? `<a class="nav-link" href="/user/${loggedInUser.id}">Profile</a>` : `<a
-                                class="nav-link" href="/register">Register</a>` }
+                            ${(!loggedInUser || loggedInUser?.name == 'guest') ? `<a
+                            class="nav-link" href="/register">Register</a>` : `<a class="nav-link" href="/user/${loggedInUser?.id}">Profile</a>` }
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/order">Cart</a>
@@ -48,16 +48,16 @@
                             <a class="nav-link" href="/reservation">Dine-in</a>
                         </li>
                         <li class="nav-item">
-                            ${(loggedInUser) ? `<a class="nav-link" href="/user/logout">Logout</a>` : `<a
-                                class="nav-link" href="/user/login">Login</a>` }
+                            ${(!loggedInUser || loggedInUser?.name == 'guest') ? `<a
+                            class="nav-link" href="/user/login">Login</a>` : `<a class="nav-link" href="/user/logout">Logout</a>` }
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
-        ${(loggedInUser) ? `<div><a style="text-decoration: none; color: salmon" href="/user/${loggedInUser.id}"><i
-                    class="fa-solid fa-user"></i> Welcome, ${loggedInUser.name.split(' ').map(name =>
-                name[0].toUpperCase() + name.substring(1)).join(' ')}</a></div>` : `` }
+        ${(!loggedInUser || loggedInUser?.name == 'guest') ? `` : `<div><a style="text-decoration: none; color: salmon" href="/user/${loggedInUser.id}"><i
+            class="fa-solid fa-user"></i> Welcome, ${loggedInUser.name.split(' ').map(name =>
+        name[0].toUpperCase() + name.substring(1)).join(' ')}</a></div>` }
     </div>
     ${body}
 </body>
