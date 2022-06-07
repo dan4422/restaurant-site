@@ -15,7 +15,7 @@ router.get('/', async (req, res) => {
             body: "partials/lunch-menu"
         },
         locals: {
-            title: "Welcome to not chick-fil-a lunch menu!",
+            title: "Beefy Bois Lunch Menu!",
             products,
             results,
             loggedInUser

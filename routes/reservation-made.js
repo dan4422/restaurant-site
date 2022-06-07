@@ -4,24 +4,17 @@ const { route } = require('.');
 const models = require('../models')
 
 
-
 router.get('/', async (req, res) => {
-    const products = await models.Product.findAll()
     loggedInUser = req.session.user
-    res.render("menuLayout", {
+    res.render("layout", {
         partials: {
-            body: "partials/menu"
+            body: "partials/reservation-made"
         },
         locals: {
-            title: "Beefy Bois Menu!",
-            products,
+            title: "Reservation made!",
             loggedInUser
         }
     })
 })
-
-
-
-
 
 module.exports = router;

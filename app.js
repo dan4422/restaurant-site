@@ -24,6 +24,7 @@ const userRegister = require('./routes/user-register')
 const searchRouter = require('./routes/search')
 const reservationRouter = require('./routes/reservation')
 const waitListRouter = require('./routes/wait-list')
+const reservationMadeRouter = require('./routes/reservation-made')
 const bodyParser = require("body-parser")
 
 app.use(bodyParser.urlencoded({ extended: true }))
@@ -67,4 +68,5 @@ app.use('/dinner-menu', dinnerMenuRouter)
 app.use('/search', searchRouter)
 app.use('/reservation', reservationRouter)
 app.use('/wait-list', waitListRouter)
+app.use('/reservation-made', reservationMadeRouter)
 module.exports = app; 
