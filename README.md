@@ -2,6 +2,9 @@
 
 Beefy-Bois-Diner is a back end E-commerce website designed to add menu items to a cart, create a guest profile, update guest profile to full profile if they register, and checkout with delivery/takeout options.
 
+We hosted our website on this url!
+https://beefyboisdiner.herokuapp.com/
+
 ---
 
 ## Table of Content
@@ -54,6 +57,14 @@ To run this web app start first by cloning the repository locally
 Make sure node and npm are installed
 <https://docs.npmjs.com/downloading-and-installing-node-js-and-npm>
 
+We also installed the following packages below to develop the app
+- nodemon
+- express-es6-template-engine
+- body-parser
+- bcrypt
+- cookie-parser
+- express-session
+
 ---
 
 ### General Information
@@ -77,11 +88,8 @@ After adding food from the menu to page. You can go to your cart page to see you
 Then you'll be able to checkout and submit an order and be redirected to a receipt page!
 ![Beefy Boi's Diner Receipt Page](https://user-images.githubusercontent.com/41593558/172439542-6f9664e4-6f86-4373-8c46-ef555ad3726f.png)
 
-To run this web app start first by cloning the repository locally
-
-Make sure node and npm are installed
-<https://docs.npmjs.com/downloading-and-installing-node-js-and-npm>
-
+If you liked our online orders, then you can join Beefy Boi's Diner in person by making a reservation by clicking the Dine-In link in the nav!
+![Beefy Boi's Reservation Page](https://user-images.githubusercontent.com/41593558/172441524-b9c6eb34-d74a-40bf-a5a0-7478ca6ca6b8.png)
 
 ---
 
