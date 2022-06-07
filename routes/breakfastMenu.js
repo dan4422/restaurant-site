@@ -13,7 +13,7 @@ router.get('/', async (req, res) => {
             body: "partials/breakfast-menu"
         },
         locals: {
-            title: "Welcome to not chick-fil-a breakfast menu!",
+            title: "Beefy Bois  Breakfast Menu!",
             products,
             results,
             loggedInUser
