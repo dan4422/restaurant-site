@@ -35,7 +35,7 @@ router.post('/', async (req, res) => {
                 date: date
             })
                 .then(user => {
-                    res.redirect('/')
+                    res.redirect('/reservation-made')
                 })
         }
         else if (reservationTaken) {
@@ -61,7 +61,7 @@ router.post('/', async (req, res) => {
 
             })
                 .then(user => {
-                    res.redirect('/')
+                    res.redirect('/reservation-made')
                 })
         }
         else if (reservations) {

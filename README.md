@@ -1,9 +1,11 @@
 # Beefy-Bois-Diner
+
 Beefy-Bois-Diner is a back end E-commerce website designed to add menu items to a cart, create a guest profile, update guest profile to full profile if they register, and checkout with delivery/takeout options.
 
 ---
 
 ## Table of Content
+
 1. Introduction
 2. Contributors
 3. Technologies
@@ -14,13 +16,16 @@ Beefy-Bois-Diner is a back end E-commerce website designed to add menu items to 
 ---
 
 ### Introduction
+
 Beefy-Bois-Diner was written as part of a group full-stack development project with an emphasis on the backend. This was part of the April 2022 cohort at Digital Crafts. 
 Welcome to Beefy Boi's Diner!
 ![Beefy Boi's Diner Front Page](https://user-images.githubusercontent.com/41593558/172436931-d3291300-9671-4cc3-83af-6279ce9f6aa6.png)
 
+
 ---
 
 ### Contributors
+
 This project was created and coded by
 - Daniel Lee <https://github.com/dan4422>
 - Brice Tran <https://github.com/Ascix>
@@ -29,6 +34,7 @@ This project was created and coded by
 ---
 
 ### Technologies
+
 - Bootstrap
 - JavaScript
 - HTML
@@ -42,6 +48,7 @@ This project was created and coded by
 ---
 
 ### Installation
+
 To run this web app start first by cloning the repository locally
 
 Make sure node and npm are installed
@@ -70,7 +77,14 @@ After adding food from the menu to page. You can go to your cart page to see you
 Then you'll be able to checkout and submit an order and be redirected to a receipt page!
 ![Beefy Boi's Diner Receipt Page](https://user-images.githubusercontent.com/41593558/172439542-6f9664e4-6f86-4373-8c46-ef555ad3726f.png)
 
+To run this web app start first by cloning the repository locally
+
+Make sure node and npm are installed
+<https://docs.npmjs.com/downloading-and-installing-node-js-and-npm>
+
+
 ---
 
 ### Acknowledgements
+
 Special thanks to Professor Lachlan Heywood <https://github.com/lachieh> for all his patience
