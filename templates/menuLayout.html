@@ -41,12 +41,14 @@
                                 href="/user/${loggedInUser?.id}">Profile</a>` }
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/order">Cart</a>
-                        </li>
-                        <li class="nav-item">
                             <a class="nav-link" href="/search">Search</a>
                         </li>
-
+                        <li class="nav-item">
+                            <a class="nav-link" href="/reservation">Dine-in</a>
+                        </li>                        
+                        <li class="nav-item">
+                            <a class="nav-link" href="/order">Cart</a>
+                        </li>
                         <li class="nav-item">
                             ${(!loggedInUser || loggedInUser?.name == 'guest') ? `<a class="nav-link"
                                 href="/user/login">Login</a>` : `<a class="nav-link" href="/user/logout">Logout</a>` }

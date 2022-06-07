@@ -8,7 +8,7 @@ const reqA = document.querySelector(".required-address")
 const reqC = document.querySelector(".required-city")
 const reqS = document.querySelector(".required-state")
 
-checkbox.addEventListener("change", (e) => {
+checkbox?.addEventListener("change", (e) => {
     if (e.target.checked) {
         password.style = 'display: block'
         reqP.required = true
