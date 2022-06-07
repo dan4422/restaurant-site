@@ -31,12 +31,12 @@
         </tr>
     </tbody>
 </table>
-<h2>
-    Customer details
+<div class="text-center">
+<h2 class="border-bottom border-white mt-5">
+    Customer Details
 </h2>
-<br>
 <p>
-    Name: ${user.name}
+    Name: ${user.name.split(' ').map(name => name[0].toUpperCase() + name.substring(1)).join(' ')}
 </p>
 <p>
     Email: ${user.email}
@@ -45,7 +45,8 @@
     Phone number: ${user.phone}
 </p>
 <form action="/order/checkout/receipt" method="post">
-    <button>Create New Order</button>
+    <button class="text-center btn btn-lg btn-warning">Go back to Menu</button>
 </form>
+</div>
 
 <script src="/cart.js"></script>
