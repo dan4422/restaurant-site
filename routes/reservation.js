@@ -35,7 +35,7 @@ router.post('/', async (req, res) => {
                 date: date
             })
                 .then(user => {
-                    res.redirect('/reservation')
+                    res.redirect('/')
                 })
         }
         else if (reservationTaken) {

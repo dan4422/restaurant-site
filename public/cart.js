@@ -1,12 +1,10 @@
 const total = document.querySelector(".total")
-const totalField = document.querySelector("#total")
 let cost = document.querySelectorAll('.cost')
 let sum = 0
 for (let i = 0; i < cost.length; i++){
     sum += parseInt(cost[i].innerText.slice(1))
 }
 total.innerText = `$${sum.toFixed(2)}`
-totalField.value = sum
 
 const hide = document.querySelector(".hide")
 
